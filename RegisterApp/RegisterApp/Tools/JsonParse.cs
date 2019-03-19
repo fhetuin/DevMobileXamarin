@@ -46,7 +46,7 @@ namespace RegisterApp.Tools
                             }
                         }
                     }
-                    newService.CreateFormulaire();
+                    newService.Formulaire = new Formulaire(newService.Sections.ToList());
                     services.Add(newService);  
                 }
                 return services;
