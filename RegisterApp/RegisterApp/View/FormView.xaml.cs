@@ -11,12 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace RegisterApp.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainView : TabbedPage
+	public partial class FormView : ContentPage
     {
-		public MainView ()
+		public FormView()
 		{
 			InitializeComponent ();
-            BindingContext = new MainViewModel();
-		}
+        }
+
+
 	}
 }

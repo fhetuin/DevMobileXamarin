@@ -1,22 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RegisterApp.View.MainView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Bienvenue"/>
-            <ListView ItemsSource="{Binding Services}" CachingStrategy="RecycleElement" HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Image Source="{Binding Image}"/>
-                                <Label Text="{Binding Title}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             xmlns:model="clr-namespace:RegisterApp.Model"
+             xmlns:view="clr-namespace:RegisterApp.View"
+             x:Class="RegisterApp.View.MainView"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.IsSwipePagingEnabled="True"
+            BarBackgroundColor="Green"
+            BarTextColor="White"
+            
+            >
+
+    <NavigationPage Title="Service">
+        <x:Arguments>
+            <view:ServiceView BindingContext="{Binding}" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Formulaire">
+        <x:Arguments>
+            <view:FormView BindingContext="{Binding}"/>
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>
