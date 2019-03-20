@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:RegisterApp.Model"
              x:Class="RegisterApp.View.FormView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             xmlns:tools="clr-namespace:RegisterApp.Tools">
+    <ContentPage.Resources>
+        <tools:ServiceToListConverter x:Key="serviceToListConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -14,8 +18,8 @@
                 <Label Text="{Binding SelectedService.Title}" Grid.Row="0"/>
                 <Image Source="{Binding SelectedService.Logo}" Grid.Row="1"/>
             </Grid>
-            <ContentView ControlTemplate="{Binding SelectedService.Formulaire}">
-            </ContentView>
+            <ListView HasUnevenRows="True" ItemsSource="{Binding SelectedService, Converter={StaticResource serviceToListConverter}}" ItemTemplate="{Binding ServiceDataTemplateSelector}">
+            </ListView>
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

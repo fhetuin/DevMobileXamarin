@@ -15,8 +15,8 @@ namespace RegisterApp.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Service> services = new ObservableCollection<Service>();
+        private ServiceDataTemplateSelector serviceDataTemplateSelector;
         private Service selectedService = null;
-        private DataTemplate dataTemplate = null;
 
         public MainViewModel()
         {
@@ -29,7 +29,24 @@ namespace RegisterApp.ViewModel
             }
             if (json != string.Empty)
             {
-                services = new ObservableCollection<Service>(JsonParse.ParseJson(json));
+                List<Service> serviceList = JsonParse.ParseJson(json);
+                services = new ObservableCollection<Service>(serviceList);
+                this.serviceDataTemplateSelector = new ServiceDataTemplateSelector(serviceList);
+            }
+        }
+
+        public ServiceDataTemplateSelector ServiceDataTemplateSelector
+        {
+            get
+            {
+                return serviceDataTemplateSelector;
+            }
+
+            set
+            {
+                serviceDataTemplateSelector = value;
+                OnPropertyChanged("ServiceDataTemplateSelector");
+            
             }
         }
 
@@ -54,6 +71,7 @@ namespace RegisterApp.ViewModel
 
             }
         }
+
 
         public ObservableCollection<Service> Services
         {

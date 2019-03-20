@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using RegisterApp.Model;
+using Xamarin.Forms;
+using Element = RegisterApp.Model.Element;
 
 namespace RegisterApp.Tools
 {
@@ -46,7 +48,6 @@ namespace RegisterApp.Tools
                             }
                         }
                     }
-                    newService.Formulaire = new Formulaire(newService.Sections.ToList());
                     services.Add(newService);  
                 }
                 return services;

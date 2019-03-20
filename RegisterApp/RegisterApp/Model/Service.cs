@@ -12,18 +12,21 @@ namespace RegisterApp.Model
         private string title;
         private string logo;
         private ObservableCollection<Section> sections;
-        private Formulaire formulaire;
 
         public Service(string title)
         {
             this.title = title;
             this.Sections = new ObservableCollection<Section>();
-            
         }
 
+        public List<Service> ToList()
+        {
+            List<Service> services = new List<Service>();
+            services.Add(this);
+            return services;
+        }
         public string Title { get => title; set => title = value; }
         public ObservableCollection<Section> Sections { get => sections; set => sections = value; }
         public string Logo { get => logo; set => logo = value; }
-        internal Formulaire Formulaire { get => formulaire; set => formulaire = value; }
     }
 }
