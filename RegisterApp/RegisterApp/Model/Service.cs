@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -7,26 +9,29 @@ using Xamarin.Forms;
 
 namespace RegisterApp.Model
 {
+    [Table("Service")]
     public class Service
     {
+
+        private int id;
         private string title;
         private string logo;
-        private ObservableCollection<Section> sections;
+        private List<Section> sections;
+
+        public Service() { }
 
         public Service(string title)
         {
             this.title = title;
-            this.Sections = new ObservableCollection<Section>();
+            this.Sections = new List<Section>();
         }
 
-        public List<Service> ToList()
-        {
-            List<Service> services = new List<Service>();
-            services.Add(this);
-            return services;
-        }
         public string Title { get => title; set => title = value; }
-        public ObservableCollection<Section> Sections { get => sections; set => sections = value; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Section> Sections { get => sections; set => sections = value; }
         public string Logo { get => logo; set => logo = value; }
+
+        [PrimaryKey, AutoIncrement]
+        public int Id { get => id; set => id = value; }
     }
 }

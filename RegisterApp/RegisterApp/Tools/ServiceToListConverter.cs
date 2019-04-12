@@ -7,6 +7,7 @@ using RegisterApp.Model;
 
 namespace RegisterApp.Tools
 {
+ //Petite bidouille pour transformer un service en une liste contenant celui-ci pour le binding 
     class ServiceToListConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

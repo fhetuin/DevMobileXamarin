@@ -4,6 +4,7 @@
              xmlns:model="clr-namespace:RegisterApp.Model"
              xmlns:view="clr-namespace:RegisterApp.View"
              x:Class="RegisterApp.View.MainView"
+            xmlns:controls="clr-namespace:RegisterApp.Controls"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.IsSwipePagingEnabled="True"
@@ -12,15 +13,15 @@
             
             >
 
-    <NavigationPage Title="Service">
-        <x:Arguments>
-            <view:ServiceView BindingContext="{Binding}" />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="Formulaire">
-        <x:Arguments>
-            <view:FormView BindingContext="{Binding}"/>
-        </x:Arguments>
-    </NavigationPage>
+    <view:ServiceView BindingContext="{Binding}" HeightRequest="10" WidthRequest="10" Title="Service" />
+
+
+    <view:FormView BindingContext="{Binding}" HeightRequest="10" WidthRequest="10" Title="Formulaire"/>
+
+
+    <view:ResultView BindingContext="{Binding ResultViewModel}"  HeightRequest="10" WidthRequest="10" Title="Résultat"/>
+
+    <view:DevView WidthRequest="2" Title="Dev"/>
+
 
 </TabbedPage>
